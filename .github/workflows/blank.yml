@@ -13,6 +13,9 @@ jobs:
       - name: Get directory
         run: ls
 
+      - name: Move file
+        run: mv /KthLargest/*.go /test
+
       - name: Run test
         working-directory: /KthLargest
         run: go test
