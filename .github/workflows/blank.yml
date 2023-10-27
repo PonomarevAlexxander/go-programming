@@ -5,8 +5,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: 
-      image: anndutova/go-course-tests:v1.0.0
+    container:
+      image: anndutova/go-course-tests:latest
     steps:
       - uses: actions/checkout@v3
 
