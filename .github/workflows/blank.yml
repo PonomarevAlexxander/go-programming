@@ -5,17 +5,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
+    container: 
       image: anndutova/go-course-tests:v1.0.0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Get directory
-        run: ls
-
-      - name: Move file
-        run: mv /KthLargest/*.go /test
+      - name: move file to test
+        run: mv file.go /test
 
       - name: Run test
-        working-directory: /KthLargest
+        working-directory: /test
         run: go test
