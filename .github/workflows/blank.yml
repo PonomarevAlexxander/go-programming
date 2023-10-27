@@ -10,8 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Print structure
+        run: ls -R
+
       - name: move file to test
-        run: mv file.go /test
+        run: mv /KthLargest/main.go /test/file.go
 
       - name: Run test
         working-directory: /test
