@@ -8,8 +8,7 @@ jobs:
     container:
       image: anndutova/go-course-tests:latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Run test
-        working-directory: /KthLargest
-        run: go test
+        run: cd KthLargest
