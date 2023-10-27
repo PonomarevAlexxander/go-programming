@@ -8,7 +8,10 @@ jobs:
     container:
       image: anndutova/go-course-tests:v1.0.0
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - name: Get directory
+        run: ls
 
       - name: move file to test
         run: mv /KthLargest/main.go /test/file.go
