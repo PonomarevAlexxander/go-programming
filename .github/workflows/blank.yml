@@ -14,7 +14,7 @@ jobs:
         run: ls
 
       - name: move file to test
-        run: mv /KthLargest/main.go /test/file.go
+        run: mv KthLargest/main.go test/file.go
 
       - name: Run test
         working-directory: /test
