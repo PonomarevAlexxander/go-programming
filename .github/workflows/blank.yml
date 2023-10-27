@@ -6,9 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: anndutova/go-course-tests:latest
+      image: anndutova/go-course-tests:v1.0.0
     steps:
       - uses: actions/checkout@v4
 
+      - name: mkdir
+        run: mkdir KthLargest
+
       - name: Run test
-        run: cd KthLargest
+        working-directory: /KthLargest/
+        run: go test
