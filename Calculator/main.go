@@ -12,7 +12,7 @@ func main() {
 	availableOperations := []rune{'+', '-', '/', '*'}
 	fmt.Println("This is Calculator CUI. Input EOF to stop the programm")
 	fmt.Printf("Available operations: %c\n\n", availableOperations)
-	stdi := bufio.NewReader(os.Stdin)
+	stdin := bufio.NewReader(os.Stdin)
 
 	for {
 		fmt.Print("Input <first operand> <operator> <second operand>: ")
@@ -20,7 +20,7 @@ func main() {
 			line string
 			err  error
 		)
-		if line, err = stdi.ReadString('\n'); err != nil {
+		if line, err = stdin.ReadString('\n'); err != nil {
 			if err == io.EOF {
 				fmt.Println("Exiting program")
 				return
