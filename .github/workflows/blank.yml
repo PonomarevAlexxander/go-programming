@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Move files
+        run: mv KthLargest/main.go /test/file.go
+
       - name: Run test
-        working-directory: KthLargest
+        working-directory: /test
         run: go test
