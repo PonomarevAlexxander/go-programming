@@ -5,14 +5,20 @@ func findKthLargest(nums []int, k int) int {
 }
 
 func findKthSmallest(nums []int, k int) int {
+	numsCopy := make([]int, len(nums))
+	copy(numsCopy, nums)
+	return doFindKthSmallest(numsCopy, k)
+}
+
+func doFindKthSmallest(nums []int, k int) int {
 	pivotIndex := partition(nums)
 	if pivotIndex+1 == k {
 		return nums[pivotIndex]
 	}
 	if pivotIndex+1 < k {
-		return findKthSmallest(nums[pivotIndex+1:], k-pivotIndex-1)
+		return doFindKthSmallest(nums[pivotIndex+1:], k-pivotIndex-1)
 	}
-	return findKthSmallest(nums[:pivotIndex], k)
+	return doFindKthSmallest(nums[:pivotIndex], k)
 }
 
 func partition(nums []int) int {
