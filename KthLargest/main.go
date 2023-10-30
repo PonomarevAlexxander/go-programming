@@ -1,3 +1,6 @@
+// Package provides function for finding Kth largest/smallest element using quick select
+// Complexity avg case O(n)
+// Naming and no errors handling are caused by CI tests provided by course
 package main
 
 func findKthLargest(nums []int, k int) int {
