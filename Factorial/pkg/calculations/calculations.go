@@ -6,7 +6,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func Calculate(number int64, logging bool) (int64, error) {
+func CalculateFactorial(number int64, logging bool) (int64, error) {
 	if number < 0 {
 		return 0, errors.New("number should be not negative")
 	}

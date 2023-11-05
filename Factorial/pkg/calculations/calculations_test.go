@@ -19,7 +19,7 @@ func TestCalculate(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := Calculate(tt.args.number, tt.args.logging)
+			got, err := CalculateFactorial(tt.args.number, tt.args.logging)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Calculate() error = %v, wantErr %v", err, tt.wantErr)
 				return

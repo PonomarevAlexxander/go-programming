@@ -24,7 +24,7 @@ func main() {
 		log.Fatal("args should contain number for factorial calculation")
 	}
 
-	result, err := calculations.Calculate(number, *loggingFlag)
+	result, err := calculations.CalculateFactorial(number, *loggingFlag)
 	if err != nil {
 		log.Fatal(err)
 	}
