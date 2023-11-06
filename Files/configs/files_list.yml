@@ -1,0 +1,7 @@
+files:
+  - path: test/testdata/file.txt
+    substring: substring
+  - path: test/testdata/yafile.txt
+    substring: substring
+  - path: test/testdata/yaafile.txt
+    substring: substring
