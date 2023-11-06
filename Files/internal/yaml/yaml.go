@@ -1,20 +1,22 @@
 package yaml
 
 import (
-	"go/course/files/internal/file"
-
 	"gopkg.in/yaml.v3"
 )
 
-func Unmarshal(data []byte) ([]file.File, error) {
+type File struct {
+	Path      string `yaml:"path"`
+	Substring string `yaml:"substring"`
+}
+
+func Unmarshal(data []byte) ([]File, error) {
 	var fileList struct {
-		Files []file.File
+		Files []File
 	}
 
 	err := yaml.Unmarshal(data, &fileList)
 	if err != nil {
 		return nil, err
 	}
-	files := fileList.Files
-	return files, nil
+	return fileList.Files, nil
 }
