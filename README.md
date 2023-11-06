@@ -6,3 +6,4 @@ ____________
   - [Task1](Calculator)
   - [Task2](KthLargest)
   - [Task3.1](Factorial)
+  - [Task3.2](Files)
