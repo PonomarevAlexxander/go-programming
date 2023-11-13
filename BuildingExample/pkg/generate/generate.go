@@ -1,6 +1,6 @@
 package generate
 
-//go:generate D:\Programs\Go-workspace\bin\stringer.exe -type=Day
+//go:generate stringer -type=Day
 type Day int
 
 const (
