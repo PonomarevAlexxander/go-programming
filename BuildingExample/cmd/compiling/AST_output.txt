@@ -1,0 +1,108 @@
+before walk main
+.   DCL # main.go:4:2
+.   .   NAME-main.a esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:4:2
+.   AS Def tc(1) # main.go:4:4
+.   .   NAME-main.a esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:4:2
+.   .   LITERAL-1 int tc(1) # main.go:4:7
+.   DCL # main.go:5:2
+.   .   NAME-main.b esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:5:2
+.   AS Def tc(1) # main.go:5:4
+.   .   NAME-main.b esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:5:2
+.   .   LITERAL-2 int tc(1) # main.go:5:7
+.   IF tc(1) # main.go:6:2
+.   IF-Cond
+.   .   LITERAL-true bool tc(1) # main.go:6:5
+.   IF-Body
+.   .   DCL # main.go:7:6
+.   .   .   NAME-main.a esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:10
+.   .   DCL # main.go:7:6
+.   .   .   NAME-main.b esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:13
+.   .   AS2 Def tc(1) # main.go:7:6
+.   .   AS2-Lhs
+.   .   .   NAME-main.a esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:10
+.   .   .   NAME-main.b esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:13
+.   .   AS2-Rhs
+.   .   .   NAME-main.a esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:4:2
+.   .   .   NAME-main.b esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:5:2
+.   .   INLMARK # +main.go:7:6
+.   .   PRINTN tc(1) # main.go:7:6 main.go:12:9
+.   .   PRINTN-Args
+.   .   .   ADD int tc(1) # main.go:7:6 main.go:12:12
+.   .   .   .   NAME-main.a esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:10
+.   .   .   .   NAME-main.b esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:13
+.   .   LABEL main..i0 # main.go:7:6
+after walk main
+.   DCL # main.go:4:2
+.   .   NAME-main.a esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:4:2
+.   AS Def tc(1) # main.go:4:4
+.   .   NAME-main.a esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:4:2
+.   .   LITERAL-1 int tc(1) # main.go:4:7
+.   DCL # main.go:5:2
+.   .   NAME-main.b esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:5:2
+.   AS Def tc(1) # main.go:5:4
+.   .   NAME-main.b esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:5:2
+.   .   LITERAL-2 int tc(1) # main.go:5:7
+.   IF tc(1) # main.go:6:2
+.   IF-Cond
+.   .   LITERAL-true bool tc(1) # main.go:6:5
+.   IF-Body
+.   .   DCL # main.go:7:6
+.   .   .   NAME-main.a esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:10
+.   .   DCL # main.go:7:6
+.   .   .   NAME-main.b esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:13
+.   .   BLOCK # main.go:7:6
+.   .   BLOCK-List
+.   .   .   AS tc(1) # main.go:7:6
+.   .   .   .   NAME-main.a esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:10
+.   .   .   .   NAME-main.a esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:4:2
+.   .   .   AS tc(1) # main.go:7:6
+.   .   .   .   NAME-main.b esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:13
+.   .   .   .   NAME-main.b esc(no) Class:PAUTO Offset:0 OnStack Used int tc(1) # main.go:5:2
+.   .   INLMARK # +main.go:7:6
+.   .   BLOCK-init
+.   .   .   AS tc(1) # main.go:7:6 main.go:12:9
+.   .   .   .   NAME-main..autotmp_4 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:7:6 main.go:12:9
+.   .   .   .   ADD int tc(1) # main.go:7:6 main.go:12:12
+.   .   .   .   .   NAME-main.a esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:10
+.   .   .   .   .   NAME-main.b esc(no) Class:PAUTO Offset:0 InlFormal OnStack Used int tc(1) # main.go:7:6 main.go:11:13
+.   .   BLOCK tc(1) # main.go:7:6 main.go:12:9
+.   .   BLOCK-List
+.   .   .   CALLFUNC Walked tc(1) # main.go:7:6 main.go:12:9
+.   .   .   .   NAME-runtime.printlock Class:PFUNC Offset:0 Used FUNC-func() tc(1)
+.   .   .   CALLFUNC Walked tc(1) # main.go:7:6 main.go:12:9
+.   .   .   .   NAME-runtime.printint Class:PFUNC Offset:0 Used FUNC-func(int64) tc(1)
+.   .   .   CALLFUNC-Args
+.   .   .   .   CONVNOP int64 tc(1) # main.go:7:6 main.go:12:9
+.   .   .   .   .   NAME-main..autotmp_4 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:7:6 main.go:12:9
+.   .   .   CALLFUNC Walked tc(1) # main.go:7:6 main.go:12:9
+.   .   .   .   NAME-runtime.printnl Class:PFUNC Offset:0 Used FUNC-func() tc(1)
+.   .   .   CALLFUNC Walked tc(1) # main.go:7:6 main.go:12:9
+.   .   .   .   NAME-runtime.printunlock Class:PFUNC Offset:0 Used FUNC-func() tc(1)
+.   .   LABEL main..i0 # main.go:7:6
+
+before walk add
+.   PRINTN tc(1) # main.go:12:9
+.   PRINTN-Args
+.   .   ADD int tc(1) # main.go:12:12
+.   .   .   NAME-main.a esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:11:10
+.   .   .   NAME-main.b esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:11:13
+after walk add
+.   BLOCK-init
+.   .   AS tc(1) # main.go:12:9
+.   .   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:9
+.   .   .   ADD int tc(1) # main.go:12:12
+.   .   .   .   NAME-main.a esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:11:10
+.   .   .   .   NAME-main.b esc(no) Class:PPARAM Offset:0 OnStack Used int tc(1) # main.go:11:13
+.   BLOCK tc(1) # main.go:12:9
+.   BLOCK-List
+.   .   CALLFUNC Walked tc(1) # main.go:12:9
+.   .   .   NAME-runtime.printlock Class:PFUNC Offset:0 Used FUNC-func() tc(1)
+.   .   CALLFUNC Walked tc(1) # main.go:12:9
+.   .   .   NAME-runtime.printint Class:PFUNC Offset:0 Used FUNC-func(int64) tc(1)
+.   .   CALLFUNC-Args
+.   .   .   CONVNOP int64 tc(1) # main.go:12:9
+.   .   .   .   NAME-main..autotmp_2 esc(N) Class:PAUTO Offset:0 AutoTemp OnStack Used int tc(1) # main.go:12:9
+.   .   CALLFUNC Walked tc(1) # main.go:12:9
+.   .   .   NAME-runtime.printnl Class:PFUNC Offset:0 Used FUNC-func() tc(1)
+.   .   CALLFUNC Walked tc(1) # main.go:12:9
+.   .   .   NAME-runtime.printunlock Class:PFUNC Offset:0 Used FUNC-func() tc(1)
