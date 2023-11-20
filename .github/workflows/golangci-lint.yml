@@ -22,17 +22,18 @@ jobs:
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
         with:
+          working-directory: Testing
           version: v1.54
           args: --config=Testing/.golangci.yaml
 
       - name: generate test coverage
+        working-directory: Testing
         run: go test ./... -coverprofile=./cover.out -covermode=atomic -coverpkg=./...
 
       - name: check test coverage
         uses: vladopajic/go-test-coverage@v2
         with:
-          # Configure action by specifying input parameters individually (option 2).
-          # If you are using config file you shouldn't use these parameters.
+          working-directory: Testing
           profile: cover.out
           local-prefix: github.com/org/project
           threshold-file: 80
