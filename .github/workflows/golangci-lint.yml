@@ -27,13 +27,11 @@ jobs:
           args: --config=.golangci.yaml
 
       - name: generate test coverage
-        working-directory: Testing
         run: go test ./... -coverprofile=./cover.out -covermode=atomic -coverpkg=./...
 
       - name: check test coverage
         uses: vladopajic/go-test-coverage@v2
         with:
-          working-directory: Testing
           profile: cover.out
           local-prefix: github.com/org/project
           threshold-file: 80
