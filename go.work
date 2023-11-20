@@ -6,4 +6,5 @@ use (
 	./Factorial
 	./Files
 	./KthLargest
+	./Testing
 )
