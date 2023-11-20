@@ -24,7 +24,7 @@ jobs:
         with:
           working-directory: Testing
           version: v1.54
-          args: --config=Testing/.golangci.yaml
+          args: --config=.golangci.yaml
 
       - name: generate test coverage
         working-directory: Testing
