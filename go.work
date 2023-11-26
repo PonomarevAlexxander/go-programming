@@ -3,6 +3,7 @@ go 1.21.3
 use (
 	./BuildingExample
 	./Calculator
+	./Concurrency
 	./Factorial
 	./Files
 	./KthLargest
