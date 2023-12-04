@@ -8,4 +8,5 @@ use (
 	./Files
 	./KthLargest
 	./Testing
+	./contactsBook
 )

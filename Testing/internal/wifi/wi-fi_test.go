@@ -32,7 +32,7 @@ var testTable = []rowTestSysInfo{
 	},
 }
 
-func TestGetName(t *testing.T) {
+func TestGetAdresses(t *testing.T) {
 	for i, test := range testTable {
 		mockWifi := NewWiFi(t)
 		wifiService := myWifi.Service{WiFi: mockWifi}
