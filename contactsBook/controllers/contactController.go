@@ -24,7 +24,6 @@ var CreateContact = func(w http.ResponseWriter, r *http.Request) {
 }
 
 var GetContacts = func(w http.ResponseWriter, r *http.Request) {
-
 	id := r.Context().Value("user").(uint)
 	data := models.GetContacts(id)
 	resp := u.Message(true, "success")
@@ -33,10 +32,7 @@ var GetContacts = func(w http.ResponseWriter, r *http.Request) {
 }
 
 var DeleteContact = func(w http.ResponseWriter, r *http.Request) {
-
 	id := r.Context().Value("user").(uint)
-	data := models.GetContacts(id)
-	resp := u.Message(true, "success")
-	resp["data"] = data
-	u.Respond(w, resp)
+	data := models.DeleteContact(id)
+	u.Respond(w, data)
 }

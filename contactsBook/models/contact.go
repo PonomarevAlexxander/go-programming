@@ -67,8 +67,8 @@ func DeleteContact(id uint) map[string]interface{} {
 
 	return map[string]interface{}{
 		"error": u.Error{
-			HTTPCode: http.StatusNoContent,
-			Code:     204,
+			HTTPCode: http.StatusNotFound,
+			Code:     404,
 			Message:  "Delete failed",
 		},
 	}

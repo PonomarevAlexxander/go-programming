@@ -20,12 +20,10 @@ type Error struct {
 	Message  string `json:"message"`
 }
 
-func JSONError(w http.ResponseWriter, e Error) map[string]interface{} {
+func JSONError(e Error) map[string]interface{} {
 	data := map[string]interface{}{
 		"error": e,
 	}
-
-	w.WriteHeader(e.HTTPCode)
 	return data
 }
 
@@ -35,7 +33,8 @@ func BadRequest(w http.ResponseWriter) {
 		Code:     400,
 		Message:  "Invalid request!",
 	}
-	Respond(w, JSONError(w, e))
+	w.WriteHeader(e.HTTPCode)
+	Respond(w, JSONError(e))
 }
 
 func ServerError(w http.ResponseWriter) {
@@ -44,7 +43,8 @@ func ServerError(w http.ResponseWriter) {
 		Code:     500,
 		Message:  "The server has encountered a situation it does not know how to handle :(",
 	}
-	Respond(w, JSONError(w, e))
+	w.WriteHeader(e.HTTPCode)
+	Respond(w, JSONError(e))
 }
 
 func AuthorizationError(w http.ResponseWriter, message string) {
@@ -53,5 +53,6 @@ func AuthorizationError(w http.ResponseWriter, message string) {
 		Code:     403,
 		Message:  message,
 	}
-	Respond(w, JSONError(w, e))
+	w.WriteHeader(e.HTTPCode)
+	Respond(w, JSONError(e))
 }

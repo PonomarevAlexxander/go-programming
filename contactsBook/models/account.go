@@ -2,6 +2,7 @@ package models
 
 import (
 	u "go/course/contactsbook/utils"
+	"net/http"
 	"net/mail"
 	"os"
 
@@ -25,21 +26,37 @@ type Account struct {
 func (account *Account) Validate() (map[string]interface{}, bool) {
 
 	if _, err := mail.ParseAddress(account.Email); err != nil {
-		return u.Message(false, "Email address is not valid!"), false
+		return u.JSONError(u.Error{
+			HTTPCode: http.StatusBadRequest,
+			Code:     400,
+			Message:  "Email is invalid",
+		}), false
 	}
 
 	if len(account.Password) < 4 {
-		return u.Message(false, "Password must be longer then 4 symbols"), false
+		return u.JSONError(u.Error{
+			HTTPCode: http.StatusBadRequest,
+			Code:     400,
+			Message:  "Passwords should be not less than 4 symbols",
+		}), false
 	}
 
 	acc := &Account{}
 
 	err := GetDB().Table("accounts").Where("email = ?", account.Email).First(acc).Error
 	if err != nil && err != gorm.ErrRecordNotFound {
-		return u.Message(false, "Connection error!"), false
+		return u.JSONError(u.Error{
+			HTTPCode: http.StatusInternalServerError,
+			Code:     500,
+			Message:  "Connection failed.",
+		}), false
 	}
 	if acc.Email != "" {
-		return u.Message(false, "The email is already occupied by another user!"), false
+		return u.JSONError(u.Error{
+			HTTPCode: http.StatusBadRequest,
+			Code:     400,
+			Message:  "Email is already taken",
+		}), false
 	}
 
 	return u.Message(false, "Check is passed!"), true
@@ -57,7 +74,11 @@ func (account *Account) CreateAccount() map[string]interface{} {
 	GetDB().Create(account)
 
 	if account.ID <= 0 {
-		return u.Message(false, "Failed to create account, connection error.")
+		return u.JSONError(u.Error{
+			HTTPCode: http.StatusBadRequest,
+			Code:     400,
+			Message:  "Account not found!",
+		})
 	}
 
 	tk := &Token{UserId: account.ID}
@@ -78,9 +99,17 @@ func LoginAccount(email, password string) map[string]interface{} {
 	err := GetDB().Table("accounts").Where("email = ?", email).First(account).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
-			return u.Message(false, "Email address not found")
+			return u.JSONError(u.Error{
+				HTTPCode: http.StatusBadRequest,
+				Code:     400,
+				Message:  "Email address not found",
+			})
 		}
-		return u.Message(false, "Connection error. Please retry")
+		return u.JSONError(u.Error{
+			HTTPCode: http.StatusInternalServerError,
+			Code:     500,
+			Message:  "Connection error!",
+		})
 	}
 
 	err = bcrypt.CompareHashAndPassword([]byte(account.Password), []byte(password))
