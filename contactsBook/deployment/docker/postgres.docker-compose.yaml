@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:13.8
+    environment:
+      POSTGRES_DB: ${db_name}
+      POSTGRES_USER: ${db_user}
+      POSTGRES_PASSWORD: ${db_pass}
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "${db_name}", "-U", "${db_user}" ]
+      timeout: 15s
+      interval: 15s
+      retries: 5
