@@ -15,6 +15,9 @@ var CreateAccount = func(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	resp := account.CreateAccount()
+	if err, ok := resp["error"].(u.Error); ok {
+		w.WriteHeader(err.HTTPCode)
+	}
 	u.Respond(w, resp)
 }
 
@@ -26,5 +29,8 @@ var LoginAccount = func(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	resp := models.LoginAccount(account.Email, account.Password)
+	if err, ok := resp["error"].(u.Error); ok {
+		w.WriteHeader(err.HTTPCode)
+	}
 	u.Respond(w, resp)
 }

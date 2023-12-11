@@ -11,6 +11,7 @@ import (
 
 type Contact struct {
 	gorm.Model
+	Id     uint   `json:"id,omitempty";sql:"-"`
 	Name   string `json:"name"`
 	Phone  string `json:"phone"`
 	UserId uint   `json:"user_id"`
@@ -40,13 +41,18 @@ func (contact *Contact) CreateContact() map[string]interface{} {
 		return response
 	}
 
-	var existing Contact
-	err := GetDB().
-		Table("contacts").
-		Where("id = ?", contact.ID).
-		First(existing).
-		Error
-	if err != nil {
+	var err error
+	if contact.Id > 0 {
+		existing := &Contact{}
+		err = GetDB().
+			Table("contacts").
+			Where("id = ?", contact.Id).
+			First(existing).
+			Error
+	}
+
+	if (err == nil) && (contact.Id > 0) {
+		contact.ID = contact.Id
 		GetDB().Save(contact)
 	} else {
 		GetDB().Create(contact)
@@ -61,7 +67,7 @@ func DeleteContact(id uint) map[string]interface{} {
 
 	if GetDB().Table("contacts").
 		Delete(&Contact{}, id).
-		Error != nil {
+		Error == nil {
 		return u.Message(true, "Contact deleted")
 	}
 
